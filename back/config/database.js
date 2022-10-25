@@ -6,8 +6,9 @@ const connectDatabase = () => {
         useUnifiedTopology: true
     }).then(con => {
         console.log(`Base de datos mongo conectada con el servidor: ${con.connection.host}`)
-    }).catsh(con => {
-        console.log ('No se logra conexion de base de datos')
+    }).catch(con => {
+        console.log(`No se logro la conexion con la base de datos`)
     })
 }
-        module.exports=connectDatabase;
+
+module.exports=connectDatabase;

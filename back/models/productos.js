@@ -29,7 +29,7 @@ const productosSchema=mongoose.Schema({
             },
             url:{
                 type:String,
-                required:true,
+                required:true
             }
         }
     ],
@@ -42,17 +42,15 @@ const productosSchema=mongoose.Schema({
             "Reloj Deportivo Mujer",
             "Reloj Digital Deportivo Hombre",
             "Reloj Digital Deportivo Mujer"
-
-
             ]    
         }
     },
     vendedor:{
-        tupe:String,
+        type:String,
         required:[true,"Por favor registre el vendedor del producto"]
     },
     inventario:{
-        type:Number,
+        type: Number,
         required:[true, "Por favor registre el stock del producto"],
         maxLength:[5,"Cantidad maxima del producto no puede superar 99999"],
         default:0
@@ -63,7 +61,6 @@ const productosSchema=mongoose.Schema({
     },
     opiniones:[
         {
-
             nombreCliente:{
                 type:String,
                 required:true
@@ -85,4 +82,4 @@ const productosSchema=mongoose.Schema({
 
 })
 
-module.exports=moongose.model("productos",productosSchema)
+module.exports=mongoose.model("productos",productosSchema)
