@@ -17,18 +17,19 @@ const Header = () => {
                         type="text"
                         id="search_field"
                         class="form-control"
-                        placeholder='Que producto busca?'></input>
+                        placeholder='Que Reloj busca?'></input>
                         <div class="input-group-append">
                             <button id="search-btn" class="btn">
-                                <i class="fa fa fa" aria-hidden="true"></i>
+                                <i class="fa fa-search-plus fa-1x text-white" aria-hidden="true"></i>
                             </button>
                         </div>
                 </div>
             </div>
 
             <div className="col-12 col-md-3 mt-4 mt-md-0 text center">
-                <button className="btn" id="login-btn">inicie Sesión</button>
-                <span id="cart" className="ml-3">Carrito</span>
+            <span><button type="button" class="btn btn-outline-warning">Inicio Sesión</button></span>
+                    &npsb;
+                <i class="fa fa-shopping-cart fa-2x text-white" aria-hidden="true"></i>
                 <span className="ml-1" id="cart_count">2</span>
             </div>
         </nav>
