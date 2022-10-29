@@ -1,0 +1,36 @@
+{
+    "item": [
+        {
+            "_id": "635819810c0fd6a4b6451750",
+            "producto": "Montblanc 1858",
+            "precio": 2950,
+            "imagen": "./images/Categorias/Deportivo Hombre/MONTBLANC 1858 AUTOMATIC 24H.png",
+            "inventario": 10,
+            "__v": 0
+        },
+        {
+            "_id": "3581ac40c0fd6a4b6451752",
+            "nombre": "OMEGA SEAMASTER",
+            "precio": 6700,
+            "imagen": "./images/Categorias/Deportivo Hombre/OMEGA SEAMASTER.png",
+            "inventario": 5,
+            "__v": 0
+        },
+        {
+            "_id": "6358209cb747d2b1a042534",
+            "nombre": "JAEGER-LECOULTRE MASTER CONTROL",
+            "precio": 15200,
+            "imagen":  "./images/Categorias/Deportivo Hombre/JAEGER-LECOULTRE MASTER CONTROL.png",
+            "inventario": 6,
+            "__v": 0
+        },
+        {
+            "_id": "635c15aa21cf03d3b2247809",
+            "nombre": "BREITLING SUPEROCEAN 57L",
+            "precio": 4300,
+            "imagen":"./images/Categorias/Deportivo Hombre/BREITLING SUPEROCEAN.pngg",
+            "inventario": 4,
+            "__v": 0
+        }
+    ]
+}
