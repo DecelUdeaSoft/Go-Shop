@@ -1,9 +1,9 @@
 import React, { Fragment, useEffect } from 'react'
 import MetaData from './layout/MetaData'
-import {useDispatch, useSelector} from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { getProducts } from '../actions/productActions'
 import { Link } from 'react-router-dom'
-import { useAlert} from 'react-alert'
+import { useAlert } from 'react-alert'
 
 export const Home = () => {
     const { loading, productos, error} = useSelector(state=> state.products)
@@ -24,7 +24,7 @@ export const Home = () => {
             {loading ? <i class="fa fa-refresh fa-spin fa-3x fa-fw"></i> :(
                 <Fragment>
                     <MetaData title="Los mejores Relores deportivos"></MetaData>
-            <h1 id="encabezado_productos">Productos</h1>
+            <h1 id="encabezado_productos">Relojes Deportivos</h1>
 
             <section id="productos" className='container mt-5'>
                 <div className='row'>
