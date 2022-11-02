@@ -36,7 +36,7 @@ const Cart = () => {
             "inventario": 5,
         },
         {
-            "_id": "6362acc820fe54a70b9d174b",
+            "_id": "6362da6631c70458bd927f4d",
             "nombre": "JAEGER-LECOULTRE MASTER CONTROL",
             "precio": 15200,
             "imagen": "./images/Categorias/Deportivo-Hombre/JAEGER_LECOULTRE_MASTER_CONTROL.png",
