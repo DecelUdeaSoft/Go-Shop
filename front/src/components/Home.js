@@ -23,7 +23,7 @@ export const Home = () => {
         <Fragment>
             {loading ? <i className="fa fa-refresh fa-spin fa-3x fa-fw"></i> :(
                 <Fragment>
-                    <MetaData title="Los mejores Relores deportivos"></MetaData>
+                    <MetaData title="Los mejores Relojes deportivos"></MetaData>
             <h1 id="encabezado_productos">Relojes Deportivos</h1>
 
             <section id="productos" className='container mt-5'>
@@ -32,7 +32,7 @@ export const Home = () => {
                     {productos && productos.map (producto => (
                         <div key={producto._id} className='col-sm-12 col-md-6 col-lg-3 my-3'>
                         <div className='card p-3 rounded'>
-                            {/* <img className='card-img-top mx-auto' src={producto.imagen[0].url} alt={producto.imagen[0].public_id}></img> */}
+                            <img className='card-img-top mx-auto' src={producto.imagen1[0].url} alt={producto.imagen1[0].public_id}></img>
                             <div className='card-body d-flex flex-column'>
                                 <h5 id="titulo_producto"><Link to={`/producto/${producto._id}`}>{producto.nombre}</Link></h5>
                                 <div className='rating mt-auto'>
@@ -61,3 +61,4 @@ export const Home = () => {
     )
 }
 export default Home
+

@@ -22,31 +22,31 @@ const Cart = () => {
     //Json de ejemplo
    let cartItems=[
         {
-            "_id": "635819810c0fd6a4b6451750",
+            "_id": "6362953c538a2c854f71f801",
             "producto": "Montblanc 1858",
             "precio": 2950,
-            "imagen": "./images/Categorias/Deportivo Hombre/MONTBLANC 1858 AUTOMATIC 24H.png",
+            "imagen": "./images/Categorias/Deportivo-Hombre/MONTBLANC_1858_AUTOMATIC_24H.png",
             "inventario": 10,
         },
         {
-            "_id": "3581ac40c0fd6a4b6451752",
+            "_id": "636294c2538a2c854f71f7fe",
             "nombre": "OMEGA SEAMASTER",
             "precio": 6700,
-            "imagen": "./images/Categorias/Deportivo Hombre/OMEGA SEAMASTER.png",
+            "imagen": "./images/Categorias/Deportivo-Hombre/OMEGA_SEAMASTER.png",
             "inventario": 5,
         },
         {
-            "_id": "6358209cb747d2b1a042534",
+            "_id": "6362941f538a2c854f71f7fb",
             "nombre": "JAEGER-LECOULTRE MASTER CONTROL",
             "precio": 15200,
-            "imagen":  "./images/Categorias/Deportivo Hombre/JAEGER-LECOULTRE MASTER CONTROL.png",
+            "imagen":  "./images/Categorias/Deportivo-Hombre/JAEGER_LECOULTRE_MASTER_CONTROL.png",
             "inventario": 6,
         },
         {
-            "_id": "635c15aa21cf03d3b2247809",
+            "_id": "636291defb47f27ef3af410d",
             "nombre": "BREITLING SUPEROCEAN 57L",
             "precio": 4300,
-            "imagen":"./images/Categorias/Deportivo Hombre/BREITLING SUPEROCEAN.pngg",
+            "imagen":"./images/Categorias/Deportivo-Hombre/BREITLING_SUPEROCEAN.png",
             "inventario": 4,
         }
     ]
