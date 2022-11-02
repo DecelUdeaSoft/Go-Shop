@@ -23,7 +23,7 @@ const Cart = () => {
    let cartItems=[
         {
             "_id": "6362953c538a2c854f71f801",
-            "producto": "Montblanc 1858",
+            "nombre": "Montblanc 1858",
             "precio": 2950,
             "imagen": "./images/Categorias/Deportivo-Hombre/MONTBLANC_1858_AUTOMATIC_24H.png",
             "inventario": 10,
@@ -36,10 +36,10 @@ const Cart = () => {
             "inventario": 5,
         },
         {
-            "_id": "6362941f538a2c854f71f7fb",
+            "_id": "6362acc820fe54a70b9d174b",
             "nombre": "JAEGER-LECOULTRE MASTER CONTROL",
             "precio": 15200,
-            "imagen":  "./images/Categorias/Deportivo-Hombre/JAEGER_LECOULTRE_MASTER_CONTROL.png",
+            "imagen": "./images/Categorias/Deportivo-Hombre/JAEGER_LECOULTRE_MASTER_CONTROL.png",
             "inventario": 6,
         },
         {
