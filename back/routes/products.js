@@ -2,8 +2,10 @@ const express=require("express")
 const router=express.Router();
 
 const {getProducts, newProduct, getProductById, updateProduct, deleteProduct, } = require("../controllers/productsController") //traemos la respuesta json desde el controlador
+const { isAuthenticatedUser , authorizeRoles} = require("../middleware/auth");
 
-router.route('/productos').get(getProducts) //Establecemos desde que  ruta queremos ver el getProducts
+
+router.route('/productos').get(isAuthenticatedUser, authorizeRole("admin","user"), getProducts) //Establecemos desde que  ruta queremos ver el getProducts
 router.route('/producto/nuevo').post(newProduct);//establecemos la ruta
 router.route('/producto/:id').get(getProductById); //Ruta para consultar por id
 router.route('/producto/:id').put(updateProduct);//Creacion de la ruta de actualizaion
