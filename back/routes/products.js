@@ -5,11 +5,11 @@ const {getProducts, newProduct, getProductById, updateProduct, deleteProduct, } 
 const { isAuthenticatedUser , authorizeRoles} = require("../middleware/auth");
 
 
-router.route('/productos').get(isAuthenticatedUser, authorizeRole("admin","user"), getProducts) //Establecemos desde que  ruta queremos ver el getProducts
-router.route('/producto/nuevo').post(newProduct);//establecemos la ruta
+router.route('/productos').get(getProducts) //Establecemos desde que  ruta queremos ver el getProducts
+router.route('/producto/nuevo').post(isAuthenticatedUser, authorizeRoles("admin"), newProduct);//establecemos la ruta
 router.route('/producto/:id').get(getProductById); //Ruta para consultar por id
-router.route('/producto/:id').put(updateProduct);//Creacion de la ruta de actualizaion
-router.route('/producto/:id').delete(deleteProduct);//creacion de la eliminacion de un producto por Id
+router.route('/producto/:id').put(isAuthenticatedUser, authorizeRoles("admin"), updateProduct);//Creacion de la ruta de actualizaion
+router.route('/producto/:id').delete(isAuthenticatedUser, authorizeRoles("admin"), deleteProduct);//creacion de la eliminacion de un producto por Id
 
 // fetch ayuda a tener acceso a ciertos recursos o informacion
 
