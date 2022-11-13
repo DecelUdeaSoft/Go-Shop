@@ -2,6 +2,7 @@ const User = require("../models/auth")
 const ErrorHandler= require("../utils/errorHandler")
 const catchAsyncErrors= require("../middleware/catchAsyncErrors");
 const tokenEnviado = require("../utils/jwtToken");
+const sendEmail = require("../utils/sendEmail")
 
 //Registrar un nuevo usuario /api/usuario/registro
 
@@ -69,29 +70,29 @@ exports.forgotPassword = catchAsyncErrors ( async( req, res, next) =>{
     
     await user.save({validateBeforeSave: false})
 
-//Crear una url para hacer el reset de la contraseña
-const resetUrl= `${req.protocol}://${req.get("host")}/api/resetPassword/${resetToken}`;
+    //Crear una url para hacer el reset de la contraseña
+    const resetUrl= `${req.protocol}://${req.get("host")}/api/resetPassword/${resetToken}`;
 
-const mensaje=`Hola!\n\nTu link para ajustar una nueva contraseña es el 
-siguiente: \n\n${resetUrl}\n\n
-Si no solicitaste este link, por favor comunicate con soporte.\n\n Att:\nGoShop Store`
+    const mensaje=`Hola!\n\nTu link para ajustar una nueva contraseña es el 
+    siguiente: \n\n${resetUrl}\n\n
+    Si no solicitaste este link, por favor comunicate con soporte.\n\n Att:\nGoShop Store`
 
-try{
-    await sendEmail({
-        email:user.email,
-        subject: "GoShop Recuperación de la contraseña",
-        mensaje
-    })
-    res.status(200).json({
-        success:true,
-        message: `Correo enviado a: ${user.email}`
-    })
-}catch(error){
-    user.resetPasswordToken=undefined;
-    user.resetPasswordExpire=undefined;
+    try{
+        await sendEmail({
+            email:user.email,
+            subject: "GoShop Recuperación de la contraseña",
+            mensaje
+        })
+        res.status(200).json({
+            success:true,
+            message: `Correo enviado a: ${user.email}`
+        })
+    }catch(error){
+        user.resetPasswordToken=undefined;
+        user.resetPasswordExpire=undefined;
 
-    await user.save({validateBeforeSave:false});
-    return next(new ErrorHandler(error.message, 500))
-}
+        await user.save({validateBeforeSave:false});
+        return next(new ErrorHandler(error.message, 500))
+    }
+    
 })
-

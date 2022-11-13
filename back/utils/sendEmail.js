@@ -2,15 +2,15 @@ const nodemailer= require("nodemailer")
 
 const sendEmail = async options =>{
     const transport = nodemailer.createTransport({
-        host: "smtp.office365.com",
-        port: 587,
+        host: "smtp.mailtrap.io",
+        port: 2525,
         auth: {
-          user: "tucorreomicrosoft",
-          pass: "tuContraseñaDeAplicacion"
+          user: "0a62c4c5eaef39",
+          pass: "014e13b634285e"
         }
       });
     const mensaje={
-        from: "GoShop Store <tuCorreoMicrosoft>",
+        from: "GoShop Store <noreply@goshop.com>",
         to: options.email,
         subject: options.subject,
         text: options.mensaje
