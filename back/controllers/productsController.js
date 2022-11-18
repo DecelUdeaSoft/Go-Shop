@@ -110,7 +110,7 @@ exports.createProductReview = catchAsyncErrors(async (req, res, next) => {
         product.opiniones.forEach(opinion => {
             if (opinion.nombreCliente === req.user.nombre) {
                 opinion.comentario = comentario,
-                opinion.rating = rating
+                    opinion.rating = rating
             }
         })
     } else {
