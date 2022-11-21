@@ -17,6 +17,9 @@ import { loadUser } from './actions/userActions';
 import store from "./store"
 import { Profile } from './components/user/Profile';
 import ProtectedRoute from './routes/ProtectedRoute';
+import { UpdateProfile } from "./components/user/UpdateProfile"
+import { UpdatePassword } from './components/user/UpdatePassword';
+import { ForgotPassword } from './components/user/ForgotPassword';
 
 function App() {
   useEffect(() => {
@@ -39,7 +42,11 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element= {<Register />} />
             <Route path="/yo" element={<Profile />} />
-
+            <Route path="7yo/update" element={<UpdateProfile />}/>
+            <Route path="/password/update" element={<UpdatePassword />}/>
+            <Route path="/password/forgot" element={<ForgotPassword />} />
+            
+            
             {/*Ruta protegida*/}
             <Route path="/dashboard"
               element={<ProtectedRoute isAdmin={true}><Dashboard /></ProtectedRoute>} />
