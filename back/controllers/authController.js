@@ -2,12 +2,11 @@ const User = require("../models/auth")
 const ErrorHandler= require("../utils/errorHandler")
 const catchAsyncErrors= require("../middleware/catchAsyncErrors");
 const tokenEnviado = require("../utils/jwtToken");
-const sendEmail = require("../utils/sendEmail");
+const sendEmail = require("../utils/sendEmail")
 const crypto = require("crypto")
-const cloudinary = require("cloudinary")
+const cloudinary= require("cloudinary")
 
 //Registrar un nuevo usuario /api/usuario/registro
-
 exports.registroUsuario= catchAsyncErrors(async (req, res, next) =>{
     const {nombre, email, password} = req.body;
 
@@ -22,16 +21,17 @@ exports.registroUsuario= catchAsyncErrors(async (req, res, next) =>{
         email,
         password,
         avatar:{
-            public_id: result.id,
+            public_id:result.public_id,
             url:result.secure_url
         }
     })
     tokenEnviado(user,201,res)
 })
 
-//iniciar Sesion - login
+
+//Iniciar Sesion - Login
 exports.loginUser = catchAsyncErrors(async(req, res, next)=>{
-    const { email, password} = req.body;
+    const { email, password} =  req.body;
 
     //revisar si los campos estan completos
     if (!email || !password){
@@ -51,7 +51,8 @@ exports.loginUser = catchAsyncErrors(async(req, res, next)=>{
         return next(new ErrorHandler("Contraseña invalida",401))
     }
 
-    tokenEnviado(user,200,res) 
+    tokenEnviado(user,200,res)
+
 })
 
 //Cerrar Sesion (logout)
@@ -79,16 +80,16 @@ exports.forgotPassword = catchAsyncErrors ( async( req, res, next) =>{
     await user.save({validateBeforeSave: false})
 
     //Crear una url para hacer el reset de la contraseña
-    const resetUrl= `${req.protocol}://${req.get("host")}/api/resetPassword/${resetToken}`;
+    const resetUrl= `${req.protocol}://${req.get("host")}/resetPassword/${resetToken}`;
 
     const mensaje=`Hola!\n\nTu link para ajustar una nueva contraseña es el 
     siguiente: \n\n${resetUrl}\n\n
-    Si no solicitaste este link, por favor comunicate con soporte.\n\n Att:\nGoShop Store`
+    Si no solicitaste este link, por favor comunicate con soporte.\n\n Att:\nVetyShop Store`
 
     try{
         await sendEmail({
             email:user.email,
-            subject: "GoShop Recuperación de la contraseña",
+            subject: "VetyShop Recuperación de la contraseña",
             mensaje
         })
         res.status(200).json({
@@ -102,8 +103,9 @@ exports.forgotPassword = catchAsyncErrors ( async( req, res, next) =>{
         await user.save({validateBeforeSave:false});
         return next(new ErrorHandler(error.message, 500))
     }
-    
 })
+
+
 //Resetear la contraseña
 exports.resetPassword = catchAsyncErrors(async (req,res,next) =>{
     //Hash el token que llego con la URl
@@ -141,6 +143,7 @@ exports.getUserProfile= catchAsyncErrors( async (req, res, next)=>{
     })
 })
 
+
 //Update Contraseña (usuario logueado)
 exports.updatePassword= catchAsyncErrors(async (req, res, next) =>{
     const user= await User.findById(req.user.id).select("+password");
@@ -157,6 +160,7 @@ exports.updatePassword= catchAsyncErrors(async (req, res, next) =>{
 
     tokenEnviado(user, 200, res)
 })
+
 
 //Update perfil de usuario (logueado)
 exports.updateProfile= catchAsyncErrors(async(req,res,next)=>{
@@ -177,13 +181,13 @@ exports.updateProfile= catchAsyncErrors(async(req,res,next)=>{
             width: 240,
             crop: "scale"
         })
-        
+
         newUserData.avatar={
             public_id: result.public_id,
             url: result.secure_url
         }
     }
-        
+
     const user = await User.findByIdAndUpdate(req.user.id, newUserData, {
         new:true,
         runValidators:true,
@@ -195,6 +199,7 @@ exports.updateProfile= catchAsyncErrors(async(req,res,next)=>{
         user
     })
 })
+
 
 //Servicios controladores sobre usuarios por parte de los ADMIN
 
@@ -227,7 +232,7 @@ exports.updateUser= catchAsyncErrors (async(req, res, next)=>{
     const nuevaData={
         nombre: req.body.nombre,
         email: req.body.email,
-        role: req.body.rol
+        role: req.body.role
     }
 
     const user= await User.findByIdAndUpdate(req.params.id, nuevaData, {

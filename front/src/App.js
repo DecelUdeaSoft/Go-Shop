@@ -20,6 +20,7 @@ import ProtectedRoute from './routes/ProtectedRoute';
 import { UpdateProfile } from "./components/user/UpdateProfile"
 import { UpdatePassword } from './components/user/UpdatePassword';
 import { ForgotPassword } from './components/user/ForgotPassword';
+import { NewPassword } from './components/user/NewPassword';
 
 function App() {
   useEffect(() => {
@@ -45,7 +46,8 @@ function App() {
             <Route path="7yo/update" element={<UpdateProfile />}/>
             <Route path="/password/update" element={<UpdatePassword />}/>
             <Route path="/password/forgot" element={<ForgotPassword />} />
-            
+            <Route path="/resertPassword/: token" element = {<NewPassword />}/>
+
             
             {/*Ruta protegida*/}
             <Route path="/dashboard"

@@ -5,7 +5,8 @@ import { clearErrors, forgotPassword } from '../../actions/userActions'
 import MetaData from '../layout/MetaData'
 
 export const ForgotPassword = () => {
-    const {email, setEmail} = useState("")
+
+    const [email, setEmail] = useState('')
     const alert = useAlert ();
     const dispatch = useDispatch();
     const {error, loading, message} = useSelector (state=> state.forgotPassword)
