@@ -62,7 +62,6 @@ export const Home = () => {
 
                             ></Slider>
 
-
                             {products && products.map(producto => (
                                 <div key={producto._id} className='col-sm-12 col-md-6 col-lg-3 my-3'>
                                     <div className='card p-3 rounded'>

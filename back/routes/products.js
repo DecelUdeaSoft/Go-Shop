@@ -8,20 +8,24 @@ const {getProducts,
     deleteProduct,
     createProductReview,
     getProductReviews,
-    deleteReview, 
+    deleteReview,
+    getAdminProducts, 
 } = require("../controllers/productsController") //traemos la respuesta json desde el controlador
 const { isAuthenticatedUser , authorizeRoles} = require("../middleware/auth");
 
 //Probemos autenticacion
-router.route('/productos').get(getProducts) //Establecemos desde que  ruta queremos ver el getProducts
-router.route('/producto/nuevo').post(isAuthenticatedUser, authorizeRoles("admin"), newProduct);//establecemos la ruta
+router.route('/productos').get(getProducts)  //Establecemos desde que ruta queremos ver el getProducts
 router.route('/producto/:id').get(getProductById); //Ruta para consultar por id
-router.route('/producto/:id').put(isAuthenticatedUser, authorizeRoles("admin"), updateProduct);//Creacion de la ruta de actualizaion
-router.route('/producto/:id').delete(isAuthenticatedUser, authorizeRoles("admin"), deleteProduct);//creacion de la eliminacion de un producto por Id
-
 router.route("/review").put(isAuthenticatedUser, createProductReview)
 router.route("/reviews").get(isAuthenticatedUser, getProductReviews)
 router.route("/review").delete(isAuthenticatedUser, deleteReview)
+
+//rutas admin
+router.route('/producto/:id').put(isAuthenticatedUser, authorizeRoles("admin"), updateProduct);//Creacion de la ruta de actualizacion
+router.route('/producto/:id').delete(isAuthenticatedUser, authorizeRoles("admin"), deleteProduct); //Creacion de la ruta de eliminacion por id
+router.route('/producto/nuevo').post(isAuthenticatedUser, authorizeRoles("admin"), newProduct); //establecemos la ruta
+router.route('/admin/productos').get(isAuthenticatedUser, authorizeRoles("admin"), getAdminProducts); //establecemos la ruta
+
 
 
 // fetch ayuda a tener acceso a ciertos recursos o informacion
