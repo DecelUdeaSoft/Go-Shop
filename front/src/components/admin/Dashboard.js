@@ -4,6 +4,7 @@ import MetaData from '../layout/MetaData'
 import Sidebar from './Sidebar'
 
 export const Dashboard = () => {
+
     return (
         <Fragment>
             <div className="row">
@@ -64,7 +65,7 @@ export const Dashboard = () => {
                                         <div className="card-body">
                                             <div className="text-center card-font-size">Usuarios<br /> <b>12</b></div>
                                         </div>
-                                        <Link className="card-footer text-white clearfix small z-1" to="/admin/users">
+                                        <Link className="card-footer text-white clearfix small z-1" to="/Productlist">
                                             <span className="float-left">Ver Detalles</span>
                                             <span className="float-right">
                                                 <i className="fa fa-angle-right"></i>
@@ -92,8 +93,6 @@ export const Dashboard = () => {
     )
 }
 
-
-    
 
 
 export default Dashboard

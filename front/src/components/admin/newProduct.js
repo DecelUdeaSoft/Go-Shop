@@ -11,9 +11,10 @@ import { useNavigate } from 'react-router-dom'
 
 
     const NewProduct = () => {
-    const [nombre, setNombre]=useState("")
-    const [precio, setPrecio]=useState(0)
-    const [descripcion, setDescripcion]=useState("")
+    const navigate=useNavigate();
+    const [nombre, setNombre]=useState('');
+    const [precio, setPrecio]=useState(0);
+    const [descripcion, setDescripcion]=useState('');
     const [categoria, setCategoria] = useState('');
     const [inventario, setInventario] = useState(0);
     const [vendedor, setVendedor] = useState('');
@@ -26,9 +27,10 @@ import { useNavigate } from 'react-router-dom'
                 "Reloj Digital Deportivo Hombre",
                 "Reloj Digital Deportivo Mujer"
     ]
-    const navigate=useNavigate()
+    
     const alert=useAlert();
     const dispatch=useDispatch();
+    
     const {loading, error, success} = useSelector (state => state.newProduct)
 
     useEffect(()=>{

@@ -21,6 +21,7 @@ import { UpdateProfile } from "./components/user/UpdateProfile"
 import { UpdatePassword } from './components/user/UpdatePassword';
 import { ForgotPassword } from './components/user/ForgotPassword';
 import { NewPassword } from './components/user/NewPassword';
+import { UpdateProduct } from './components/admin/UpdateProduct';
 
 function App() {
   useEffect(() => {
@@ -52,6 +53,14 @@ function App() {
             {/*Ruta protegida*/}
             <Route path="/dashboard"
               element={<ProtectedRoute isAdmin={true}><Dashboard /></ProtectedRoute>} />
+            
+            {/*Ruta protegida*/}
+            <Route path="/updateProduct/:id"
+              element={<ProtectedRoute isAdmin={true}><UpdateProduct /></ProtectedRoute>} />
+
+
+
+              
           </Routes>
         </div>
         <Footer />
