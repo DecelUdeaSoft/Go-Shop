@@ -21,7 +21,7 @@ const productosSchema=mongoose.Schema({
         type: Number,
         default: 0
     },
-    imagen1:[
+    imagen:[
         {
             public_id:{
                 type:String,

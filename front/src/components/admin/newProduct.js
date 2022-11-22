@@ -17,7 +17,7 @@ import { useNavigate } from 'react-router-dom'
     const [categoria, setCategoria] = useState('');
     const [inventario, setInventario] = useState(0);
     const [vendedor, setVendedor] = useState('');
-    const [imagen1, setImagen] = useState([]);
+    const [imagen, setImagen] = useState([]);
     const [imagenPreview, setImagenPreview] = useState([])
 
     const categorias = [
@@ -54,7 +54,7 @@ import { useNavigate } from 'react-router-dom'
         formData.set('inventario', inventario);
         formData.set('vendedor', vendedor);
 
-        imagen1.forEach(img => {
+        imagen.forEach(img => {
             formData.append("imagen", img)
         })
 

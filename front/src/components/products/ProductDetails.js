@@ -55,9 +55,9 @@ export const ProductDetails = () => {
       <div className='row d-flex justify-content-around'>
           <div className='col-12 col-lg-5 img-fluid' id="imagen_producto">
               <Carousel pause='hover'>
-                {product.imagen1 && product.imagen1.map(img =>(
+                {product.imagen && product.imagen.map(img =>(
                   <Carousel.Item key={img.public_id}>
-                    <img className="d-block w-100" src={"../"+img.url} alt={product.nombre}></img>
+                    <img className="d-block w-100" src={img.url} alt={product.nombre}></img>
                   </Carousel.Item>
                 ))}
               </Carousel>
