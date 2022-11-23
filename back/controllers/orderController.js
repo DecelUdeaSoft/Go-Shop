@@ -46,6 +46,7 @@ exports.getOneOrder= catchAsyncErrors(async(req, res, next)=>{
         order
     })
 })
+
 //Ver todas mis ordenes (usuario logueado)
 exports.myOrders= catchAsyncErrors(async(req,res, next)=>{
     const orders= await Order.find({user: req.user._id});
@@ -74,6 +75,7 @@ exports.allOrders= catchAsyncErrors(async (req, res, next)=>{
     })
 
 })
+
 //Editar una orden (admin) 
 exports.updateOrder= catchAsyncErrors(async(req, res, next)=>{
     const order= await Order.findById(req.params.id)
@@ -82,10 +84,17 @@ exports.updateOrder= catchAsyncErrors(async(req, res, next)=>{
         return next (new ErrorHandler("Orden no encontrada", 404))
     }
 
-    if (order.estado==="Enviado"){
+    if (order.estado==="Enviado" && req.body.estado==="Enviado"){
         return next(new ErrorHandler("Esta orden ya fue enviada", 400))
     }
 
+    //Restamos del inventario
+    if (req.body.estado!=="Procesando"){
+        order.items.forEach(async item => {
+            await updateStock(item.producto, item.cantidad)
+        })
+    }
+   
     order.estado= req.body.estado;
     order.fechaEnvio= Date.now();
 
@@ -117,4 +126,3 @@ exports.deleteOrder = catchAsyncErrors(async (req, res, next)=>{
         message:"Orden eliminada correctamente"
     })
 })
-

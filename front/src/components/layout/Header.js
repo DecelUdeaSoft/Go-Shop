@@ -38,7 +38,7 @@ const Header = () => {
                     <Link to="/carrito"><i className="fa fa-shopping-cart fa-2x text-white" aria-hidden="false"></i>
                         <span className="ml-1" id="cart_count">{cartItems.length}</span></Link>
                 
-                    {user ? (
+                        {user ? (
                         <div className="ml-4 dropdown d-inline">
                             <Link to="#!" className="btn dropdown-toggle text-white mr-4" type="button"
                                 id="dropDownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -61,15 +61,16 @@ const Header = () => {
                                 <Link className="dropdown-item" to="/" onClick={logoutHandler}>Cerrar Sesion</Link>
                             </div>
                         </div>
-                    ): !loading && <Link to="/login" className='btn ml-4' id="login_btn">Login</Link>}
+                    ) : !loading && <Link to="/login" className='btn ml-4' id="login_btn">Login</Link>}
 
 
                 </div>
 
-             </nav>
+            </nav>
 
-         </Fragment >
+        </Fragment>
     )
+
 }
 
 export default Header

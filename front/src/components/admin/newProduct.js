@@ -10,9 +10,9 @@ import { NEW_PRODUCT_RESET } from '../../constants/productConstants'
 import { useNavigate } from 'react-router-dom'
 
 
+
     const NewProduct = () => {
-    const navigate = useNavigate();
-    const [nombre, setNombre]=useState('');
+    const navigate= useNavigate();    const [nombre, setNombre]=useState('');
     const [precio, setPrecio]=useState(0);
     const [descripcion, setDescripcion]=useState('');
     const [categoria, setCategoria] = useState('');
@@ -39,7 +39,7 @@ import { useNavigate } from 'react-router-dom'
             dispatch(clearErrors)
         }
         if(success){
-            navigate("/dashboard")
+            navigate('/dashboard');
             alert.success("producto registrado con Exito")
             dispatch({type: NEW_PRODUCT_RESET})
         }

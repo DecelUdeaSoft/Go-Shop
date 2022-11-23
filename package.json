@@ -1,5 +1,5 @@
 {
-  "name": "cd",
+  "name": "goshop",
   "version": "1.0.0",
   "description": "Tienda virtual de venta de relojes",
   "main": "server.js",

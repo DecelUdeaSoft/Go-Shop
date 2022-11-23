@@ -8,15 +8,13 @@ import Pagination from 'react-js-pagination'
 import Slider from "rc-slider"
 import 'rc-slider/assets/index.css'
 
-
 export const Home = () => {
     const params = useParams();
-    const Keyword = params.Keyword;
-    const [precio, setPrecio] = useState([1000, 100000])
+    const keyword = params.keyword;
+    const [precio, setPrecio] = useState([100, 1000000])
     const [currentPage, setCurrentPage] = useState(1)
     const { loading, products, error, resPerPage, productsCount } = useSelector(state => state.products)
     const alert = useAlert();
-
 
     const dispatch = useDispatch();
     useEffect(() => {
@@ -24,20 +22,19 @@ export const Home = () => {
             return alert.error(error)
         }
 
-        dispatch(getProducts(currentPage, Keyword, precio));
-    }, [dispatch, alert, error, currentPage, Keyword, precio])
+        dispatch(getProducts(currentPage, keyword, precio));
+    }, [dispatch, alert, error, currentPage, keyword, precio])
 
     function setCurrentPageNo(pageNumber) {
         setCurrentPage(pageNumber)
     }
 
-
     return (
         <Fragment>
-            {loading ? <i className="fa fa-refresh fa-spin fa-3x fa-fw"></i> : (
+            {loading ? <i class="fa fa-refresh fa-spin fa-3x fa-fw"></i> : (
                 <Fragment>
-                    <MetaData title="Los mejores Relojes deportivos"></MetaData>
-                    <h1 id="encabezado_productos">Relojes Deportivos</h1>
+                    <MetaData title="Lo mejor para tu compañero"></MetaData>
+                    <h1 id="encabezado_productos">Ultimos Productos</h1>
 
                     <section id="productos" className='container mt-5'>
                         <div className='row'>
@@ -45,12 +42,12 @@ export const Home = () => {
                                 range
                                 className='t-slider'
                                 marks={{
-                                    1000: `$1000`,
-                                    100000: `$100000`
+                                    100: `$100`,
+                                    1000000: `$1000000`
                                 }}
-                                min={1000}
-                                max={100000}
-                                defaultValue={[1000, 100000]}
+                                min={100}
+                                max={1000000}
+                                defaultValue={[100, 1000000]}
                                 tipFormatter={value => `$${value}`}
                                 tipProps={{
                                     placement: 'top',
@@ -59,7 +56,6 @@ export const Home = () => {
                                 }}
                                 value={precio}
                                 onChange={precio => setPrecio(precio)}
-
                             ></Slider>
 
                             {products && products.map(producto => (
@@ -109,4 +105,3 @@ export const Home = () => {
     )
 }
 export default Home
-

@@ -1,5 +1,6 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+
 
 export const Search = () => {
 
@@ -17,6 +18,7 @@ export const Search = () => {
         }
     }
     console.log(keyword)
+
 
     return (
         <form onSubmit={searchHandler}>

@@ -66,3 +66,5 @@ export const ForgotPassword = () => {
         </Fragment>
     )
 }
+
+export default ForgotPassword

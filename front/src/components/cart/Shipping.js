@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import CheckoutSteps from './CheckOutSteps';
 
 export const Shipping = () => {
-    let Pais = require('./Colombia.json');
+    let Pais = require('./colombia.json');
     const navigate= useNavigate()
     const { shippingInfo } = useSelector(state => state.cart)
 
@@ -49,8 +49,7 @@ export const Shipping = () => {
                                 type="text"
                                 id="address_field"
                                 className="form-control"
-                                value={direccion}
-                                onChange={(e) => setDireccion(e.target.value)}
+                                value={direccion}                                onChange={(e) => setDireccion(e.target.value)}
                                 required
                             />
                         </div>
