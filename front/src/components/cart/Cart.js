@@ -1,14 +1,16 @@
-import React, { Fragment } from 'react'
+import React, { Fragment} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { addItemToCart, removeItemFromCart } from '../../actions/cartActions'
 import MetaData from '../layout/MetaData'
 
 
 const Cart = () => {
+    const navigate=useNavigate()
     const dispatch= useDispatch();
     const {cartItems} = useSelector(state => state.cart)
-  
+    const {user} =useSelector(state => state.auth)
+
     const increaseQty = (id, quantity, inventario) => {
         const newQty = quantity+1;
         if (newQty > inventario) return;
@@ -19,6 +21,15 @@ const Cart = () => {
         const newQty = quantity-1;
         if (newQty <= 0) return;
         dispatch(addItemToCart(id, newQty))
+   }
+
+   const checkOutHandler = () =>{
+        if (user){
+            navigate("/shipping")
+        }
+        else{
+            navigate("/login")
+        }
    }
 
    const removeCartItemHandler= (id)=>{
@@ -38,7 +49,7 @@ const Cart = () => {
                     <div className="row d-flex justify-content-between">
                         <div className="col-12 col-lg-8">
 
-                        {cartItems.map (item => (
+                        {cartItems && cartItems.map(item => (
                                 <Fragment>
                                     <hr />
 
@@ -49,7 +60,7 @@ const Cart = () => {
                                             </div>
 
                                             <div className="col-5 col-lg-3">
-                                                <Link to={`/producto/${item._id}`}>{item.nombre}</Link>
+                                                <Link to={`/producto/${item.product}`}>{item.nombre}</Link>
                                             </div>
 
 
@@ -68,7 +79,7 @@ const Cart = () => {
                                             </div>
 
                                             <div className="col-4 col-lg-1 mt-4 mt-lg-0">
-                                                <i id="delete_cart_item" className="fa fa-trash btn btn-danger"onClick={() => removeCartItemHandler(item.product)}></i>
+                                                <i id="delete_cart_item" className="fa fa-trash btn btn-danger" onClick={() => removeCartItemHandler(item.product)}></i>
                                             </div>
 
                                         </div>
@@ -87,7 +98,7 @@ const Cart = () => {
                                 <p>Est. total: <span className="order-summary-values">${cartItems.reduce((acc, item)=> acc+(item.quantity*item.precio),0).toFixed(2)}</span></p>
 
                                 <hr />
-                                <button id="checkout_btn" className="btn btn-primary btn-block">Comprar!</button>
+                                <button id="checkout_btn" className="btn btn-primary btn-block" onClick={checkOutHandler}>Comprar!</button>
                             </div>
                         </div>
                     </div>

@@ -11,7 +11,7 @@ import { useNavigate } from 'react-router-dom'
 
 
     const NewProduct = () => {
-    const navigate=useNavigate();
+    const navigate = useNavigate();
     const [nombre, setNombre]=useState('');
     const [precio, setPrecio]=useState(0);
     const [descripcion, setDescripcion]=useState('');
