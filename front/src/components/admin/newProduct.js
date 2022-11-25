@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from 'react'
+import React, { Fragment, useState, useEffect } from 'react'
 
 import MetaData from '../layout/MetaData'
 import Sidebar from './Sidebar'
@@ -9,12 +9,11 @@ import { newProduct, clearErrors } from '../../actions/productActions'
 import { NEW_PRODUCT_RESET } from '../../constants/productConstants'
 import { useNavigate } from 'react-router-dom'
 
-
-
-    const NewProduct = () => {
-    const navigate= useNavigate();    const [nombre, setNombre]=useState('');
-    const [precio, setPrecio]=useState(0);
-    const [descripcion, setDescripcion]=useState('');
+const NewProduct = () => {
+    const navigate = useNavigate
+    const [nombre, setNombre] = useState('');
+    const [precio, setPrecio] = useState(0);
+    const [descripcion, setDescripcion] = useState('');
     const [categoria, setCategoria] = useState('');
     const [inventario, setInventario] = useState(0);
     const [vendedor, setVendedor] = useState('');
@@ -28,24 +27,27 @@ import { useNavigate } from 'react-router-dom'
                 "Reloj Digital Deportivo Mujer"
     ]
     
-    const alert=useAlert();
-    const dispatch=useDispatch();
-    
-    const {loading, error, success} = useSelector (state => state.newProduct)
+    const alert = useAlert();
+    const dispatch = useDispatch();
 
-    useEffect(()=>{
-        if(error){
-            alert.error(error)
-            dispatch(clearErrors)
+    const { loading, error, success } = useSelector(state => state.newProduct);
+
+    useEffect(() => {
+
+        if (error) {
+            alert.error(error);
+            dispatch(clearErrors())
         }
-        if(success){
+
+        if (success) {
             navigate('/dashboard');
-            alert.success("producto registrado con Exito")
-            dispatch({type: NEW_PRODUCT_RESET})
+            alert.success('Product created successfully');
+            dispatch({ type: NEW_PRODUCT_RESET })
         }
+
     }, [dispatch, alert, error, success])
 
-    const submiHandler = (e) => {
+    const submitHandler = (e) => {
         e.preventDefault();
 
         const formData = new FormData();
@@ -57,34 +59,34 @@ import { useNavigate } from 'react-router-dom'
         formData.set('vendedor', vendedor);
 
         imagen.forEach(img => {
-            formData.append("imagen", img)
+            formData.append('imagen', img)
         })
 
         dispatch(newProduct(formData))
-
     }
-    const onChange= e => {
+
+    const onChange = e => {
+
         const files = Array.from(e.target.files)
 
-        setImagenPreview([])
+        setImagenPreview([]);
         setImagen([])
-        
-        files.forEach(file =>{
+
+        files.forEach(file => {
             const reader = new FileReader();
 
-            reader.onload =() =>{
-               if (reader.readyState ===2) {
-                setImagenPreview(oldArray => [...oldArray, reader.result])
-                setImagen(oldArray => [...oldArray, reader.result])
-               }
+            reader.onload = () => {
+                if (reader.readyState === 2) {
+                    setImagenPreview(oldArray => [...oldArray, reader.result])
+                    setImagen(oldArray => [...oldArray, reader.result])
+                }
             }
-        reader.readAsDataURL(file)
 
+            reader.readAsDataURL(file)
         })
-        
-    }    
+    }
 
-    
+
     return (
         <Fragment>
             <MetaData title={'Nuevo Producto'} />
@@ -96,7 +98,7 @@ import { useNavigate } from 'react-router-dom'
                 <div className="col-12 col-md-10">
                     <Fragment>
                         <div className="wrapper my-5">
-                            <form className="shadow-lg" onSubmit={submiHandler} encType='application/json'>
+                            <form className="shadow-lg" onSubmit={submitHandler} encType='multipart/form-data'>
                                 <h1 className="mb-4">Nuevo Producto</h1>
 
                                 <div className="form-group">
@@ -164,7 +166,7 @@ import { useNavigate } from 'react-router-dom'
                                 </div>
 
                                 <div className='form-group'>
-                                    <label>Imagenes</label>
+                                    <label>Imágenes</label>
 
                                     <div className='custom-file'>
                                         <input
@@ -174,12 +176,12 @@ import { useNavigate } from 'react-router-dom'
                                             id='customFile'
                                             onChange={onChange}
                                             multiple
-                                            
                                         />
                                         <label className='custom-file-label' htmlFor='customFile'>
-                                            Seleccione Imagen
-                                     </label>
+                                            Seleccione Imágenes
+                                        </label>
                                     </div>
+
                                     {imagenPreview.map(img => (
                                         <img src={img} key={img} alt="Images Preview" className="mt-3 mr-2" width="55" height="52" />
                                     ))}
@@ -191,9 +193,9 @@ import { useNavigate } from 'react-router-dom'
                                     id="login_button"
                                     type="submit"
                                     className="btn btn-block py-3"
-                                    disabled={loading ? true: false}
+                                    disabled={loading ? true : false}
                                 >
-                                    CREAR
+                                    CREATE
                                 </button>
 
                             </form>

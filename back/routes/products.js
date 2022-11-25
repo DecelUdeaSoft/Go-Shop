@@ -28,6 +28,5 @@ router.route('/admin/productos').get(isAuthenticatedUser, authorizeRoles("admin"
 
 
 
-// fetch ayuda a tener acceso a ciertos recursos o informacion
 
 module.exports=router;

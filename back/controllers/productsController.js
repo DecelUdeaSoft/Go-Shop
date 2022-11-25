@@ -117,7 +117,7 @@ exports.newProduct=catchAsyncErrors(async(req,res,next)=>{
 
     let imagenLink=[]
 
-    for (let i=0; i<imagen.length;i++){
+    for (let i=0; i<imagen.lenght;i++){
         const result = await cloudinary.v2.uploader.upload(imagen[i],{
             folder:"products"
         })
@@ -238,7 +238,7 @@ function verProductos(){
 
 //Ver por id
 function verProductoPorID(id){
-    fetch('http://localhost:4000/api/producto/'+id)
+    fetch('http://localhost:4000/api/producto/' + id)
     .then(res=>res.json())
     .then(res=>console.log(res))
     .catch(err=>console.error(err))
