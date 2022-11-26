@@ -3,7 +3,7 @@ import { useAlert } from 'react-alert';
 import { useDispatch, useSelector } from 'react-redux';
 import MetaData from '../layout/MetaData'
 import {register, clearErrors} from "../../actions/userActions"
-import {useNavigate} from "react-router-dom"
+import {Navigate, useNavigate} from "react-router-dom"
 
 export const Register = () => {
     const [user, setUser]= useState({
@@ -26,7 +26,7 @@ export const Register = () => {
         if (error) {
             dispatch(clearErrors)
         }
-    }, [dispatch, isAuthenticated, error, alert])
+    }, [dispatch, isAuthenticated, error, alert, navigate])
 
     const submitHandler = (e) =>{
         e.preventDefault();

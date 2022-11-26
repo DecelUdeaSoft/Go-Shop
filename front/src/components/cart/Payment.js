@@ -20,7 +20,7 @@ export const Payment = () => {
             alert.error(error)
             dispatch(clearErrors)
         }
-    },[dispatch, alert, error])
+    },[dispatch, alert, error, navigate])
 
     let items=[];
 

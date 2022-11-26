@@ -38,7 +38,7 @@ export const ProcessOrder = () => {
             dispatch({ type: UPDATE_ORDER_RESET })
         }
 
-    }, [dispatch, alert, error, isUpdated, orderId])
+    }, [dispatch, alert, error, isUpdated, orderId, navigate])
 
 
     const updateOrderHandler = (id) => {
